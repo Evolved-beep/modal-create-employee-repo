@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+## Installation
+> npm i modal-success-employee
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Dependency
+> npm install to get all the dependency
 
-## Available Scripts
 
-In the project directory, you can run:
+## File that you use the modal 
+```js
+function App() {
+    const [openModal, setOpenModal] = useState(true)
+    return (
+        openModal && <Modal closeModal={setOpenModal} />
+    )
+  
+}
 
-### `npm start`
+export default App;
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Modal component 
+```js
+const Modal = ({closeModal}) => {
+    return(
+        <div className={closeModal ? "modal_container" : "modal_display"}>
+            <div className="modal_test">
+                <p>Employee created</p>
+                <div className="close_container">
+                    <p onClick={() => closeModal(false)}>X</p>
+                </div>
+            </div>
+        </div>
+    )
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+}
 
-### `npm test`
+export default Modal
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Some CSS style 
+```css
+.modal_container {
+    position: fixed;
+    background-color: rgba(0,0,0,0.75);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-### `npm run build`
+.modal_display {
+    display: none;
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+.modal_test {
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    padding: 10px 30px;
+    background: white;
+    border-radius: 5px;
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+.modal_test p {
+    text-align: left;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+.close_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgb(0,0,0);
+    top: -20%;
+    right: -1%;
+}
+```
