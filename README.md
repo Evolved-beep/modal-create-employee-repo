@@ -1,5 +1,5 @@
 ## Installation
-> npm i modal-success-employee
+> npm i modal-success-employe
 
 ## Dependency
 > npm install to get all the dependency
